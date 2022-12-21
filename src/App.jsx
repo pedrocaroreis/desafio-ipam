@@ -1,5 +1,14 @@
+import React, { Fragment } from "react"
+import Hello from "./components/Hello"
+import Selector from "./components/Selector"
+
 function App() {
-  return <h1 className="text-center mt-7 text-3xl font-bold">¡Hello world!</h1>
+  return (
+    <Fragment>
+      <Hello />
+      <Selector />
+    </Fragment>
+  )
 }
 
 export default App
