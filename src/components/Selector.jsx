@@ -11,7 +11,7 @@ const Selector = (props) => {
 	};
 
 	return (
-		<div className="text-center m-7 p-7 border-2 border-gray-500 text-3xl font-bold">
+		<div className="text-center bg-white shadow-lg rounded-lg m-7 p-7 border-2 border-gray-500 text-3xl font-bold">
 			<label
 				className="block m-2"
 				htmlFor="uf-select"
