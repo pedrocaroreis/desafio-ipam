@@ -1,12 +1,15 @@
 import React, { Fragment } from "react"
 import Hello from "./components/Hello"
 import Selector from "./components/Selector"
+import Card from "./components/Card"
 
 function App() {
   return (
     <Fragment>
-      <Hello />
-      <Selector />
+      <Card>
+        <Hello />
+        <Selector />
+      </Card>
     </Fragment>
   )
 }
