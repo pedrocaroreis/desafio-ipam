@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const DUMMY_UF = ["AA", "BB", "CC"];
 
-const SelecionaMuni = () => {
+const SelecionaMunicipio = () => {
 	const [selectedMuni, setSelectedMuni] = useState("");
 
 	const onChangeHandler = (e) => {
@@ -33,4 +33,4 @@ const SelecionaMuni = () => {
 	);
 };
 
-export default SelecionaMuni;
+export default SelecionaMunicipio;
