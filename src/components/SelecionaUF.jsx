@@ -29,9 +29,11 @@ const SelecionaUF = () => {
 			>
 				<option value="">-- Escolha uma opção --</option>
 				{ufs.map((el) => (
-					<option value={el.sigla}>
-						{" "}
-						{el.sigla} - {el.nome}{" "}
+					<option
+						key={el.id}
+						value={el.sigla}
+					>
+						{el.sigla} - {el.nome}
 					</option>
 				))}
 			</select>
