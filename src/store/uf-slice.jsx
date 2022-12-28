@@ -5,21 +5,7 @@ const ufSlice = createSlice({
 	initialState: {
 		ufs: [],
 	},
-	reducers: {
-		addUFs(state, action) {
-			const newUF = action.payload;
-			state.ufs.push({
-				id: newUF.id,
-				sigla: newUF.sigla,
-				nome: newUF.nome,
-				regiao: {
-					id: newUF.regiao.id,
-					sigla: newUF.regiao.sigla,
-					nome: newUF.regiao.nome,
-				},
-			});
-		},
-	},
+	reducers: {},
 });
 
 export const ufActions = ufSlice.actions;
