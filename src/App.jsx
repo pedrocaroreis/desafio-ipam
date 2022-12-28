@@ -14,9 +14,9 @@ function App() {
 	const dispatch = useDispatch;
 
 	useEffect(() => {
-		// 	fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados");
-		// 	.then((response) => response.json())
-		// 	.then((data) => console.log(data));
+		fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados")
+			.then((response) => response.json())
+			.then((data) => console.log(data));
 		const fetchData = async () => {
 			const data = await fetch(
 				"https://servicodados.ibge.gov.br/api/v1/localidades/estados"
