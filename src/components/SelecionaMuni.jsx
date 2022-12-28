@@ -3,11 +3,11 @@ import { useState } from "react";
 
 const DUMMY_UF = ["AA", "BB", "CC"];
 
-const Selector = (props) => {
-	const [selectedUF, setSelectedUF] = useState("");
+const SelecionaMuni = () => {
+	const [selectedMuni, setSelectedMuni] = useState("");
 
 	const onChangeHandler = (e) => {
-		setSelectedUF(e.target.value);
+		setSelectedMuni(e.target.value);
 	};
 
 	return (
@@ -16,13 +16,13 @@ const Selector = (props) => {
 				className="block m-2"
 				htmlFor="uf-select"
 			>
-				Lista de {props.tipo}:
+				Lista de Municipios:
 			</label>
 			<select
 				className="text-center"
 				onChange={onChangeHandler}
-				name="uf"
-				id="uf-select"
+				name="municipio"
+				id="muni-select"
 			>
 				<option value="">-- Escolha uma opção --</option>
 				{DUMMY_UF.map((el) => (
@@ -33,4 +33,4 @@ const Selector = (props) => {
 	);
 };
 
-export default Selector;
+export default SelecionaMuni;
