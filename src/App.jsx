@@ -17,10 +17,7 @@ function App() {
 
 	useEffect(() => {
 		dispatch(fetchUFData());
-		console.log(ufs);
 	}, [dispatch]);
-
-	console.log(ufs);
 
 	return (
 		<Fragment>

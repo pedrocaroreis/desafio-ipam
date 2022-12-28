@@ -16,11 +16,11 @@ export const fetchUFData = () => {
 	return async (dispatch) => {
 		const fetchData = async () => {
 			const response = await fetch(
-				"https://servicodados.ibge.gov.br/api/v1/localidades/estados"
+				"https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome"
 			);
 
 			if (!response.ok) {
-				throw new Error("Could not fetch cart data!");
+				throw new Error("Nao foi possivel conectar a base de dados!");
 			}
 
 			const data = await response.json();
@@ -32,7 +32,7 @@ export const fetchUFData = () => {
 			const ufData = await fetchData();
 			dispatch(
 				ufActions.preencheUFs({
-					listaUFs: ufData.listaUFs,
+					listaUFs: ufData,
 				})
 			);
 		} catch (error) {
