@@ -1,14 +1,11 @@
 import React from "react";
-import { useState } from "react";
+
+import { useSelector } from "react-redux";
 
 const DUMMY_UF = ["AA", "BB", "CC"];
 
 const SelecionaMunicipio = () => {
-	const [selectedMuni, setSelectedMuni] = useState("");
-
-	const onChangeHandler = (e) => {
-		setSelectedMuni(e.target.value);
-	};
+	const municipios = useSelector((state) => state.municipio.listaMunicipios);
 
 	return (
 		<div className="text-center bg-white shadow-lg rounded-lg m-7 p-7 border-2 border-gray-500 text-3xl font-bold">
@@ -20,13 +17,18 @@ const SelecionaMunicipio = () => {
 			</label>
 			<select
 				className="text-center"
-				onChange={onChangeHandler}
+				// onChange={onChangeHandler}
 				name="municipio"
 				id="muni-select"
 			>
 				<option value="">-- Escolha uma opção --</option>
-				{DUMMY_UF.map((el) => (
-					<option value={el}> {el} </option>
+				{municipios.map((el) => (
+					<option
+						key={el.id}
+						value={el.nome}
+					>
+						{el.nome}
+					</option>
 				))}
 			</select>
 		</div>

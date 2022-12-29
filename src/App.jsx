@@ -13,7 +13,7 @@ import { fetchUFData } from "./store/uf-slice";
 
 function App() {
 	const dispatch = useDispatch();
-	const ufs = useSelector((state) => state.uf);
+	// const ufs = useSelector((state) => state.uf);
 
 	useEffect(() => {
 		dispatch(fetchUFData());

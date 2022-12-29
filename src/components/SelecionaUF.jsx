@@ -1,17 +1,25 @@
-import React from "react";
-// import { useState } from "react";
+import React, { useEffect } from "react";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
-const DUMMY_UF = ["AA", "BB", "CC"];
+import { fetchMunicipioData } from "../store/municipio-slice";
 
 const SelecionaUF = () => {
 	const ufs = useSelector((state) => state.uf.listaUFs);
-	// const [selectedUF, setSelectedUF] = useState("");
 
-	// const onChangeHandler = (e) => {
-	// 	setSelectedUF(e.target.value);
-	// };
+	const dispatch = useDispatch();
+
+	let ufSelecionada;
+
+	const onChangeHandler = (e) => {
+		ufSelecionada = e.target.value;
+		dispatch(fetchMunicipioData(e.target.value));
+		// console.log(e.target.value);
+	};
+
+	useEffect(() => {
+		dispatch(fetchMunicipioData(ufSelecionada));
+	}, [onChangeHandler]);
 
 	return (
 		<div className="text-center bg-white shadow-lg rounded-lg m-7 p-7 border-2 border-gray-500 text-3xl font-bold">
@@ -23,7 +31,7 @@ const SelecionaUF = () => {
 			</label>
 			<select
 				className="text-center"
-				// onChange={onChangeHandler}
+				onChange={onChangeHandler}
 				name="uf"
 				id="uf-select"
 			>
