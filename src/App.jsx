@@ -15,52 +15,8 @@ function App() {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-<<<<<<< HEAD
-		fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados")
-			.then((response) => response.json())
-			.then((data) => console.log(data));
-		const fetchData = async () => {
-			const data = await fetch(
-				"https://servicodados.ibge.gov.br/api/v1/localidades/estados"
-			);
-			const response = await data.json();
-			return response;
-		};
-		try {
-			fetchData();
-		} catch (error) {
-			console.error;
-		}
-	}, []);
-
-	// const fetchUFs = async () => {
-	// 	const response = await fetch(
-	// 		"https://servicodados.ibge.gov.br/api/v1/localidades/estados"
-	// 	);
-	// 	if (!response.ok) {
-	// 		throw new Error("Nao foi possivel conectar");
-	// 	}
-	// 	const data = await response.json();
-	// };
-
-	const preencheUFs = () => {
-		dispatch(
-			ufActions.addUFs({
-				id,
-				sigla,
-				nome,
-				regiao: {
-					id,
-					sigla,
-					nome,
-				},
-			})
-		);
-	};
-=======
 		dispatch(fetchUFData());
 	}, [dispatch]);
->>>>>>> 96f0e7eee31ba97876044513734e4a216289d49d
 
 	return (
 		<Fragment>
