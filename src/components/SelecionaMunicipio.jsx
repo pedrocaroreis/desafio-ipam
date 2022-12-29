@@ -1,13 +1,16 @@
 import React from "react";
-import { useState } from "react";
 
-const DUMMY_UF = ["AA", "BB", "CC"];
+import { useSelector, useDispatch } from "react-redux";
 
-const SelecionaMuni = () => {
-	const [selectedMuni, setSelectedMuni] = useState("");
+import { fetchMunicipioInfo } from "../store/municipioinfo-slice";
+
+const SelecionaMunicipio = () => {
+	const municipios = useSelector((state) => state.municipios.listaMunicipios);
+
+	const dispatch = useDispatch();
 
 	const onChangeHandler = (e) => {
-		setSelectedMuni(e.target.value);
+		dispatch(fetchMunicipioInfo(e.target.value));
 	};
 
 	return (
@@ -25,12 +28,17 @@ const SelecionaMuni = () => {
 				id="muni-select"
 			>
 				<option value="">-- Escolha uma opção --</option>
-				{DUMMY_UF.map((el) => (
-					<option value={el}> {el} </option>
+				{municipios.map((el) => (
+					<option
+						key={el.id}
+						value={el.id}
+					>
+						{el.nome}
+					</option>
 				))}
 			</select>
 		</div>
 	);
 };
 
-export default SelecionaMuni;
+export default SelecionaMunicipio;
