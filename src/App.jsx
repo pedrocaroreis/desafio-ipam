@@ -1,19 +1,22 @@
-import React, { Fragment, useEffect } from "react";
+import React from "react";
+import { Fragment, useEffect } from "react";
 
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import Header from "./components/Header";
 import SelecionaUF from "./components/SelecionaUF";
-import SelecionaMuni from "./components/SelecionaMuni";
+import SelecionaMunicipio from "./components/SelecionaMunicipio";
 import Card from "./components/Card";
 import ShowInfo from "./components/ShowInfo";
 
-import { ufActions } from "./store/uf-slice";
+import { fetchUFData } from "./store/uf-slice";
 
 function App() {
-	const dispatch = useDispatch;
+	const dispatch = useDispatch();
+	// const ufs = useSelector((state) => state.uf);
 
 	useEffect(() => {
+<<<<<<< HEAD
 		fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados")
 			.then((response) => response.json())
 			.then((data) => console.log(data));
@@ -55,13 +58,17 @@ function App() {
 			})
 		);
 	};
+=======
+		dispatch(fetchUFData());
+	}, [dispatch]);
+>>>>>>> 96f0e7eee31ba97876044513734e4a216289d49d
 
 	return (
 		<Fragment>
 			<Card>
 				<Header />
 				<SelecionaUF />
-				<SelecionaMuni />
+				<SelecionaMunicipio />
 				<ShowInfo />
 			</Card>
 		</Fragment>

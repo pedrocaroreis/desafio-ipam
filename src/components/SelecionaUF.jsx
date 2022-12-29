@@ -1,13 +1,16 @@
 import React from "react";
-import { useState } from "react";
 
-const DUMMY_UF = ["AA", "BB", "CC"];
+import { useSelector, useDispatch } from "react-redux";
+
+import { fetchMunicipiosData } from "../store/municipios-slice";
 
 const SelecionaUF = () => {
-	const [selectedUF, setSelectedUF] = useState("");
+	const ufs = useSelector((state) => state.uf.listaUFs);
+
+	const dispatch = useDispatch();
 
 	const onChangeHandler = (e) => {
-		setSelectedUF(e.target.value);
+		dispatch(fetchMunicipiosData(e.target.value));
 	};
 
 	return (
@@ -25,8 +28,13 @@ const SelecionaUF = () => {
 				id="uf-select"
 			>
 				<option value="">-- Escolha uma opção --</option>
-				{DUMMY_UF.map((el) => (
-					<option value={el}> {el} </option>
+				{ufs.map((el) => (
+					<option
+						key={el.id}
+						value={el.sigla}
+					>
+						{el.sigla} - {el.nome}
+					</option>
 				))}
 			</select>
 		</div>
