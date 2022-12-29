@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const municipioSlice = createSlice({
-	name: "municipio",
+const municipiosSlice = createSlice({
+	name: "municipios",
 	initialState: {
 		listaMunicipios: [],
 	},
@@ -12,7 +12,7 @@ const municipioSlice = createSlice({
 	},
 });
 
-export const fetchMunicipioData = (uf) => {
+export const fetchMunicipiosData = (uf) => {
 	return async (dispatch) => {
 		const fetchData = async () => {
 			const response = await fetch(
@@ -29,10 +29,10 @@ export const fetchMunicipioData = (uf) => {
 		};
 
 		try {
-			const municipioData = await fetchData();
+			const municipiosData = await fetchData();
 			dispatch(
-				municipioActions.preencheMunicipios({
-					listaMunicipios: municipioData,
+				municipiosActions.preencheMunicipios({
+					listaMunicipios: municipiosData,
 				})
 			);
 		} catch (error) {
@@ -41,6 +41,6 @@ export const fetchMunicipioData = (uf) => {
 	};
 };
 
-export const municipioActions = municipioSlice.actions;
+export const municipiosActions = municipiosSlice.actions;
 
-export default municipioSlice;
+export default municipiosSlice;

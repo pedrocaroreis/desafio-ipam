@@ -1,11 +1,17 @@
 import React from "react";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
-const DUMMY_UF = ["AA", "BB", "CC"];
+import { fetchMunicipioInfo } from "../store/municipioinfo-slice";
 
 const SelecionaMunicipio = () => {
-	const municipios = useSelector((state) => state.municipio.listaMunicipios);
+	const municipios = useSelector((state) => state.municipios.listaMunicipios);
+
+	const dispatch = useDispatch();
+
+	const onChangeHandler = (e) => {
+		dispatch(fetchMunicipioInfo(e.target.value));
+	};
 
 	return (
 		<div className="text-center bg-white shadow-lg rounded-lg m-7 p-7 border-2 border-gray-500 text-3xl font-bold">
@@ -17,7 +23,7 @@ const SelecionaMunicipio = () => {
 			</label>
 			<select
 				className="text-center"
-				// onChange={onChangeHandler}
+				onChange={onChangeHandler}
 				name="municipio"
 				id="muni-select"
 			>
@@ -25,7 +31,7 @@ const SelecionaMunicipio = () => {
 				{municipios.map((el) => (
 					<option
 						key={el.id}
-						value={el.nome}
+						value={el.id}
 					>
 						{el.nome}
 					</option>
