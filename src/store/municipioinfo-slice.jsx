@@ -16,7 +16,7 @@ export const fetchMunicipioInfo = (idMunicipio) => {
 	return async (dispatch) => {
 		const fetchData = async () => {
 			const response = await fetch(
-				`https://servicodados.ibge.gov.br/api/v1/localidades/municipios/${idMunicipio}/distritos`
+				`https://servicodados.ibge.gov.br/api/v1/localidades/municipios/${idMunicipio}/distritos?view=nivelado`
 			);
 
 			if (!response.ok) {
@@ -32,7 +32,7 @@ export const fetchMunicipioInfo = (idMunicipio) => {
 			const municipioInfo = await fetchData();
 			dispatch(
 				municipioinfoActions.informaMunicipio({
-					municipioinfo: municipioInfo,
+					municipioinfo: municipioInfo[0],
 				})
 			);
 		} catch (error) {
